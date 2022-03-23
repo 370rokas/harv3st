@@ -28,7 +28,7 @@ def pretty_output(title, name, stuff, verbose_level):
         null_values = []
 
         for data_i, data_v in stuff["Data"].items():
-            if data_v is None:
+            if data_v is None or (type(data_v) == str and data_v == ""):
                 null_values.append(data_i)
             else:
                 print(Fore.GREEN + f"-- {data_i} - {data_v}")

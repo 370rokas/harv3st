@@ -12,7 +12,6 @@ https://github.com/370rokas
 harvester.py - Contains main functions and stuff
 """
 
-import requests
 from misc import pretty_output
 import harversters.github as gh
 
