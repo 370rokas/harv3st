@@ -65,5 +65,24 @@ def run_username(username):
 
 
 def run_email(email):
-    print("")
-    # TODO : Search GH by Email
+    res = {}
+
+    resp = requests.get(f'https://api.github.com/search/users?q={email}')
+    if resp.status_code != 200:
+        res["Found"] = False
+        res["Url"] = ""
+        res["Data"] = {}
+    else:
+        resp_data = resp.json()
+
+        if resp_data["total_count"] == 0:
+            res["Found"] = False
+            res["Url"] = ""
+            res["Data"] = {}
+            return res
+
+        res["Found"] = True
+        res["Url"] = f'https://github.com/{resp_data["items"][0]["login"]}'
+        res["Data"] = dig_username(resp_data["items"][0]["login"])
+
+    return res

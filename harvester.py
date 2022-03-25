@@ -20,5 +20,5 @@ def run_username(username, verbose_level):
     pretty_output("GitHub", username, gh.run_username(username), verbose_level)
 
 
-def run_email(email):
-    print("email")
+def run_email(email, verbose_level):
+    pretty_output("GitHub", email, gh.run_email(email), verbose_level)
